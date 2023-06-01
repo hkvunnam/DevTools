@@ -2,8 +2,6 @@ package hariKrishna.devTools;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Optional;
 
 import org.apache.commons.io.FileUtils;
@@ -11,7 +9,6 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.devtools.DevTools;
 import org.openqa.selenium.devtools.v113.fetch.Fetch;
-import org.openqa.selenium.devtools.v113.fetch.model.RequestPattern;
 import org.openqa.selenium.devtools.v113.network.Network;
 import org.openqa.selenium.devtools.v113.network.model.Request;
 import org.openqa.selenium.devtools.v113.network.model.Response;
@@ -36,7 +33,7 @@ public class NetworkCalls {
 			Response res = response.getResponse();
 			System.out.println(res.getUrl() + " with response Code: " + res.getStatus());
 		});
-		devtools.send(Network.setBlockedURLs(ImmutableList.of("*.jpeg*","*.jpg*","*.gif*","*.css*","*.png*")));		Optional<List<RequestPattern>> pattern = Optional.of(Arrays.asList(new RequestPattern(Optional.of("*images*"),Optional.empty(),Optional.empty())));
+		devtools.send(Network.setBlockedURLs(ImmutableList.of("*.jpeg*", "*.jpg*", "*.gif*", "*.css*", "*.png*")));
 		devtools.send(Fetch.enable(Optional.empty(), Optional.empty()));
 		devtools.addListener(Fetch.requestPaused(), request -> {
 			Request req = request.getRequest();
@@ -57,7 +54,6 @@ public class NetworkCalls {
 				+ NetworkCalls.class.getSimpleName() + ".png"));
 		Thread.sleep(3000);
 		driver.close();
-		
 
 	}
 
