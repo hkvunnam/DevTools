@@ -31,7 +31,7 @@ public class Emulat {
 		driver.findElement(By.name("q")).sendKeys(Keys.chord("Places to vist", Keys.ENTER));
 		File file = driver.getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(file, new File(System.getProperty("user.dir") + "\\reports\\screenshots\\Emulation\\"
-				+ Emulat.class.getName() + ".png"));
+				+ Emulat.class.getSimpleName() + ".png"));
 		Thread.sleep(3000);
 		driver.close();
 	}
